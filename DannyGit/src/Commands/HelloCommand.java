@@ -21,7 +21,7 @@ public class HelloCommand implements CommandExecutor {
         if(cs instanceof Player){
             cs.sendMessage("What up brah");
         }else{
-            cs.sendMessage("bruh get out of the console and play the game");
+            cs.sendMessage("bruh youre not a player");
         }
         return false;
     }
