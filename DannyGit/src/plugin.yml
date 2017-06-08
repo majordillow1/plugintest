@@ -1,0 +1,7 @@
+main: dannygit.DannyGit
+version: 0.1
+author: DannyBoy and Jacobi
+commands:
+    hello:
+        usage: /hello
+        description: test to make sure our plugin works
