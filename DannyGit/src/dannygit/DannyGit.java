@@ -46,7 +46,7 @@ registerThorsHammer();
             e.printStackTrace();
         }
         try {
-            ThorsHammer thorshammer = new ThorsHammer(70);
+            ThorsHammer thorshammer = new ThorsHammer(90);
             Enchantment.registerEnchantment(thorshammer);
         }
         catch (IllegalArgumentException e){

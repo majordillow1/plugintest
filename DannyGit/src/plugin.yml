@@ -1,6 +1,8 @@
 main: dannygit.DannyGit
 version: 0.1
 author: DannyBoy and Jacobi
+name: The first plugin
+
 commands:
     hello:
         usage: /hello

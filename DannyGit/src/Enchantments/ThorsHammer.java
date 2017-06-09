@@ -5,6 +5,7 @@
  */
 package Enchantments;
 
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.EventHandler;
@@ -48,7 +49,7 @@ public class ThorsHammer extends Enchantment{
 
     @Override
     public boolean isTreasure() {
-       return true;
+       return false;
     }
 
     @Override

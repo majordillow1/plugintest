@@ -27,7 +27,7 @@ public class HelloCommand implements CommandExecutor {
             //Henlo Jacobi... I can see you coding right now...
             ItemStack item = new ItemStack(Material.STICK);
             ItemMeta itemMeta = item.getItemMeta();
-            ThorsHammer thorshammer = new ThorsHammer(420);
+            ThorsHammer thorshammer = new ThorsHammer(90);
             itemMeta.addEnchant(thorshammer, 1, true);
             item.setItemMeta(itemMeta);
             Player player = ((Player) cs).getPlayer();
