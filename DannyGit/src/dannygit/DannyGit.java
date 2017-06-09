@@ -24,6 +24,7 @@ public class DannyGit extends JavaPlugin {
     }
     @Override
     public void onEnable(){
+        //testing my name
         getCommand("hello").setExecutor(new HelloCommand());
     }
     
