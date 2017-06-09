@@ -20,6 +20,7 @@ public class HelloCommand implements CommandExecutor {
     public boolean onCommand(CommandSender cs, Command cmnd, String string, String[] strings) {
         if(cs instanceof Player){
             cs.sendMessage("What up brah");
+            //Henlo Jacobi... I can see you coding right now...
         }else{
             cs.sendMessage("bruh youre not a player");
         }
