@@ -21,7 +21,10 @@ public class ThorsHammer extends Enchantment{
 
     public ThorsHammer(int id) {
         super(id);
+        
     }
+
+    
 
    
 
