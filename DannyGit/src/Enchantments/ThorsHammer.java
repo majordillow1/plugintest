@@ -67,7 +67,10 @@ public class ThorsHammer extends Enchantment{
 
     @Override
     public boolean canEnchantItem(ItemStack is) {
-       return true;
+            return true;
+       
+        
+       
     }
   
 }
