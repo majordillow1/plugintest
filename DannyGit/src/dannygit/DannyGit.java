@@ -9,6 +9,7 @@ import Commands.HelloCommand;
 import Enchantments.Enchant;
 import Enchantments.ThorsHammer;
 import Listeners.Farts;
+import Listeners.WeaponListener;
 import java.lang.reflect.Field;
 import static org.bukkit.Bukkit.getLogger;
 import org.bukkit.enchantments.Enchantment;
@@ -30,7 +31,9 @@ public class DannyGit extends JavaPlugin {
         //testing my name
         getCommand("hello").setExecutor(new HelloCommand());
       getServer().getPluginManager().registerEvents(new Enchant(), this);
-registerThorsHammer();getServer().getPluginManager().registerEvents(new Farts(), this);
+      getServer().getPluginManager().registerEvents(new WeaponListener(), this);
+    registerThorsHammer();
+    getServer().getPluginManager().registerEvents(new Farts(), this);
     }
     public static void main(String[] args) {
         // TODO code application logic here
