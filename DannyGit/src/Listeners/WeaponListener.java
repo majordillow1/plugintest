@@ -5,6 +5,7 @@
  */
 package Listeners;
 
+import EnchantmentTriggers.ThorsHammerFire;
 import Enchantments.ThorsHammer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
@@ -25,6 +26,7 @@ public class WeaponListener implements Listener {
         if(e.getItem().getEnchantmentLevel(new ThorsHammer(90))!= 0){
             if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
                 e.getPlayer().sendMessage("fire thors hammer");
+                ThorsHammerFire.FireThorsHammer(e.getPlayer());
             }
             
         }

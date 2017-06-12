@@ -7,3 +7,6 @@ commands:
     hello:
         usage: /hello
         description: test to make sure our plugin works
+    thorshammer:
+        usage: /thorshammer
+        description: add thors hammer to item in hand

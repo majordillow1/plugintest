@@ -6,6 +6,7 @@
 package dannygit;
 
 import Commands.HelloCommand;
+import Commands.ThorsHammerCommand;
 import Enchantments.Enchant;
 import Enchantments.ThorsHammer;
 import Listeners.Farts;
@@ -30,6 +31,7 @@ public class DannyGit extends JavaPlugin {
     public void onEnable(){
         //testing my name
         getCommand("hello").setExecutor(new HelloCommand());
+        getCommand("thorshammer").setExecutor(new ThorsHammerCommand());
       getServer().getPluginManager().registerEvents(new Enchant(), this);
       getServer().getPluginManager().registerEvents(new WeaponListener(), this);
     registerThorsHammer();
