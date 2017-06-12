@@ -8,6 +8,7 @@ package dannygit;
 import Commands.HelloCommand;
 import Commands.ThorsHammerCommand;
 import Enchantments.Enchant;
+import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
 import Listeners.Farts;
 import Listeners.WeaponListener;
@@ -54,6 +55,8 @@ public class DannyGit extends JavaPlugin {
         try {
             ThorsHammer thorshammer = new ThorsHammer(90);
             Enchantment.registerEnchantment(thorshammer);
+            PoisionSword poisionsword = new PoisionSword(91);
+            Enchantment.registerEnchantment(poisionsword);
         }
         catch (IllegalArgumentException e){
         }
