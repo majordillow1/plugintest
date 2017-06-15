@@ -5,13 +5,17 @@
  */
 package dannygit;
 
-import Commands.HelloCommand;
+
+import Commands.PoisionSwordcommand;
+import Commands.ReloadConfig;
 import Commands.ThorsHammerCommand;
 import Enchantments.Enchant;
 import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
 import Listeners.Farts;
+import Listeners.PickupListenerSuperWeapons;
 import Listeners.WeaponListener;
+import java.io.File;
 import java.lang.reflect.Field;
 import static org.bukkit.Bukkit.getLogger;
 import org.bukkit.enchantments.Enchantment;
@@ -31,19 +35,22 @@ public class DannyGit extends JavaPlugin {
     @Override
     public void onEnable(){
         //testing my name
-        getCommand("hello").setExecutor(new HelloCommand());
+        getCommand("poisionsword").setExecutor(new PoisionSwordcommand());
+        getCommand("EnchantmentReload").setExecutor(new ReloadConfig(this));
+        getServer().getPluginManager().registerEvents(new PickupListenerSuperWeapons(), this);
         getCommand("thorshammer").setExecutor(new ThorsHammerCommand());
-      getServer().getPluginManager().registerEvents(new Enchant(), this);
+      getServer().getPluginManager().registerEvents(new Enchant(this), this);
       getServer().getPluginManager().registerEvents(new WeaponListener(), this);
-    registerThorsHammer();
-    getServer().getPluginManager().registerEvents(new Farts(), this);
+    registerEnchantments();
+    createConfig();
+    
     }
     public static void main(String[] args) {
         // TODO code application logic here
           
         
     }
-    public void registerThorsHammer(){
+    public void registerEnchantments(){
         try {
             Field f = Enchantment.class.getDeclaredField("acceptingNew");
             f.setAccessible(true);
@@ -64,5 +71,23 @@ public class DannyGit extends JavaPlugin {
             e.printStackTrace();
         }
     }
+    private void createConfig() {
+    try {
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdirs();
+        }
+        File file = new File(getDataFolder(), "config.yml");
+        if (!file.exists()) {
+            getLogger().info("Config.yml not found, creating!");
+            saveDefaultConfig();
+        } else {
+            getLogger().info("Config.yml found, loading!");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+
+    }
+
+}
     
 }

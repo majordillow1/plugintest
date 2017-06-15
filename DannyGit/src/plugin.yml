@@ -1,12 +1,23 @@
 main: dannygit.DannyGit
 version: 0.1
 author: DannyBoy and Jacobi
-name: The first plugin
+name: CustomEnchantments
 
 commands:
-    hello:
-        usage: /hello
-        description: test to make sure our plugin works
     thorshammer:
         usage: /thorshammer
         description: add thors hammer to item in hand
+    EnchantmentReload:
+        usage: /EnchantmentReload
+        description: reload the config files for CustomEnchantments
+    poisionsword:
+        usage: /poisionsword
+        description: add poisionsword to your sword
+    
+permissions:
+    CustomEnchantments.SuperWeapon.get:
+        default: op
+    CustomEnchantments.SuperWeapon.Wield:
+        default: op
+    CustomEnchantments.get:
+        defualt: op

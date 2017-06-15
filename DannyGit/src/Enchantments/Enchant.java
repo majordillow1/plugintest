@@ -5,6 +5,7 @@
  */
 package Enchantments;
 
+import dannygit.DannyGit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 import util.RomanNumbers;
 
 /**
@@ -27,10 +29,23 @@ import util.RomanNumbers;
  * @author knightmare
  */
 public class Enchant implements Listener{
+     DannyGit plugin;
+    public Enchant(DannyGit instance){
+        plugin = instance;
+    }
+
+   
+
+    
  @EventHandler
  public void AddEnchant(EnchantItemEvent e){
      ItemStack item = e.getItem();
+     double x = Math.random();
      if(item.getType().equals(Material.DIAMOND_AXE)){
+         double y = plugin.getConfig().getDouble("Probability.ThorsHammer");
+         if(x<= y){
+             addThorEnchant(item,1);
+         }
         // e.getEnchanter().sendMessage("its been enchanted");
        // addThorEnchant(item,1);
            /* ThorsHammer thorshammer = new ThorsHammer(90);
@@ -41,7 +56,8 @@ public class Enchant implements Listener{
            */
      }
      if(item.getType().equals(Material.WOOD_SWORD)|| item.getType().equals(Material.IRON_SWORD)||item.getType().equals(Material.STONE_SWORD)|| item.getType().equals(Material.DIAMOND_SWORD)){
-         if( Math.random() <= 0.5 ) {
+        double y = plugin.getConfig().getDouble("Probability.PoisionSword");
+         if( x <= y ) {
              addPoisionSwordEnchant(item,1);
             }
      }

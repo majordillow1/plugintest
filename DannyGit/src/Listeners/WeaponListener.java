@@ -6,14 +6,18 @@
 package Listeners;
 
 import EnchantmentTriggers.ThorsHammerFire;
+import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 /**
  *
@@ -29,6 +33,21 @@ public class WeaponListener implements Listener {
                 ThorsHammerFire.FireThorsHammer(e.getPlayer());
             }
             
+        }
+    }
+    @EventHandler
+    public void addPoisionSword(EntityDamageEvent e){
+        if(e.getEntity() instanceof Player){
+            Player p = (Player) e.getEntity();
+           EntityDamageByEntityEvent damageEvent = (EntityDamageByEntityEvent)e;
+         if (damageEvent.getDamager() instanceof Player) {
+         Player damager = (Player) damageEvent.getDamager();
+         if(damager.getInventory().getItemInMainHand().getEnchantmentLevel(new PoisionSword(91))!=0){
+             if(!p.getActivePotionEffects().contains(PotionEffectType.POISON)){
+                 p.addPotionEffect(new PotionEffect(PotionEffectType.POISON,200,0));
+             }
+         }
+         }
         }
     }
 }

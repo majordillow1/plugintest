@@ -1,0 +1,4 @@
+#probablilities set these from 0.0 to 1.0 for the probability i.e 0.4 = 40% you can set this out to 0.45 for 45%
+Probability:
+    ThorsHammer: 0.00
+    PoisionSword: 0.00

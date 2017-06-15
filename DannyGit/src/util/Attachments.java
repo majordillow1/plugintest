@@ -22,4 +22,10 @@ public class Attachments {
           }
         return false;
     }
+    public static Boolean canAttachPoisionSword(ItemStack item){
+        if(item.getType() == Material.WOOD_SWORD || item.getType() == Material.IRON_SWORD || item.getType()==Material.STONE_SWORD||item.getType()==Material.GOLD_SWORD||item.getType()==Material.DIAMOND_SWORD){
+            return true;
+        }
+        return false;
+    }
 }

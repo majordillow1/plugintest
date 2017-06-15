@@ -25,10 +25,17 @@ public class ThorsHammerCommand implements CommandExecutor {
     public boolean onCommand(CommandSender cs, Command cmnd, String string, String[] strings) {
         if(cs instanceof Player){
             //works
-            Player player = ((Player) cs).getPlayer();
-            ItemStack item = player.getInventory().getItemInMainHand();
+            Player p = ((Player) cs).getPlayer();
+            
+             ItemStack item = p.getInventory().getItemInMainHand();
+            
             if(Attachments.canAttachThorsHammer(item)){
-               Enchant.addThorEnchant(item, 1);
+                if(p.hasPermission("CustomEnchantments.SuperWeapon.get")){
+                Enchant.addThorEnchant(item, 1);
+            }else{
+                    p.sendMessage("you dont have perms");
+                }
+              
             }
             else
                     {

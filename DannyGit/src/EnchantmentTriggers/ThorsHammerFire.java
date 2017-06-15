@@ -17,7 +17,8 @@ import org.bukkit.util.BlockIterator;
  */
 public class ThorsHammerFire {
     public static void FireThorsHammer(Player p){
-          int radius = 10;
+        if(p.hasPermission("CustomEnchantments.SuperWeapon.Wield")){
+           int radius = 10;
 			Block b = getTargetBlock(p, 100);
 			Location bly = b.getLocation().add(0,1,0);
 			p.getWorld().createExplosion(bly.getX(),bly.getY(),bly.getZ(),40,true);
@@ -26,7 +27,11 @@ public class ThorsHammerFire {
 				Location point = bly.clone().add(radius * Math.sin(angle),0.0d, radius * Math.cos(angle));
 			/*	e.getPlayer().getWorld().spawnEntity(point, EntityType.CREEPER); */
 				p.getWorld().strikeLightning(point);
-          }
+          } 
+        }else{
+            p.sendMessage("you can't wield this....why do you have it?");
+        }
+          
     }
      private static final Block getTargetBlock(Player player, int range) {
     BlockIterator iter = new BlockIterator(player, range);
