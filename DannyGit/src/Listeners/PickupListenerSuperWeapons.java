@@ -6,6 +6,7 @@
 package Listeners;
 
 import Enchantments.ThorsHammer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,6 +24,7 @@ public class PickupListenerSuperWeapons implements Listener {
             if(!p.hasPermission("CustomEnchantments.SuperWeapon.Wield")){
                p.sendMessage("You don't have the power to wield this item!");
                p.setHealth(0);
+               Bukkit.broadcastMessage(p.getName() + " pulled a muscle trying to pick up Thor's Hammer");
                p.getWorld().strikeLightning(p.getLocation());
             }
             

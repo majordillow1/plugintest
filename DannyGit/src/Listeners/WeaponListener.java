@@ -29,7 +29,7 @@ public class WeaponListener implements Listener {
         ItemStack item = e.getItem();
         if(e.getItem().getEnchantmentLevel(new ThorsHammer(90))!= 0){
             if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
-                e.getPlayer().sendMessage("fire thors hammer");
+               
                 ThorsHammerFire.FireThorsHammer(e.getPlayer());
             }
             
