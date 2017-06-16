@@ -26,23 +26,42 @@ import org.bukkit.potion.PotionEffectType;
 public class WeaponListener implements Listener {
     @EventHandler
     public void ClickListener(PlayerInteractEvent e){
-        ItemStack item = e.getItem();
-        if(e.getItem().getEnchantmentLevel(new ThorsHammer(90))!= 0){
-            if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
-               
-                ThorsHammerFire.FireThorsHammer(e.getPlayer());
-            }
+        if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
+            if(e.getItem() != null && e.getItem().hasItemMeta()){
+                if(e.getItem().getItemMeta().hasEnchant(new ThorsHammer(90))){
+                
             
-        }
+                ItemStack item = e.getItem();
+                ThorsHammerFire.FireThorsHammer(e.getPlayer());
+                }else{return;}
+            }
+            else
+            {
+                return;
+            }
+       }
     }
+
+        
+        
+        
+            
+        
+        
+           
+            
+       
+        
+        
+    
     @EventHandler
     public void addPoisionSword(EntityDamageEvent e){
         if(e.getEntity() instanceof Player){
             Player p = (Player) e.getEntity();
-           EntityDamageByEntityEvent damageEvent = (EntityDamageByEntityEvent)e;
+           EntityDamageByEntityEvent damageEvent = (EntityDamageByEntityEvent) e;
          if (damageEvent.getDamager() instanceof Player) {
          Player damager = (Player) damageEvent.getDamager();
-         if(damager.getInventory().getItemInMainHand().getEnchantmentLevel(new PoisionSword(91))!=0){
+         if(damager.getInventory().getItemInMainHand().getItemMeta().hasEnchant(new PoisionSword(91))){
              if(!p.getActivePotionEffects().contains(PotionEffectType.POISON)){
                  p.addPotionEffect(new PotionEffect(PotionEffectType.POISON,200,0));
              }

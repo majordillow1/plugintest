@@ -64,6 +64,7 @@ public class DannyGit extends JavaPlugin {
             Enchantment.registerEnchantment(thorshammer);
             PoisionSword poisionsword = new PoisionSword(91);
             Enchantment.registerEnchantment(poisionsword);
+            
         }
         catch (IllegalArgumentException e){
         }

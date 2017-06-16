@@ -26,8 +26,10 @@ public class PickupListenerSuperWeapons implements Listener {
                p.setHealth(0);
                Bukkit.broadcastMessage(p.getName() + " pulled a muscle trying to pick up Thor's Hammer");
                p.getWorld().strikeLightning(p.getLocation());
+               e.setCancelled(true);
             }
             
         }
+        
     }
 }

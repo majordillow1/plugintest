@@ -2,3 +2,6 @@
 Probability:
     ThorsHammer: 0.00
     PoisionSword: 0.00
+ThorsHammer:
+    ExplosionSize: 40
+    ExplosionDestroy: false
