@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -32,16 +33,16 @@ public class WeaponListener implements Listener {
         if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
             if(e.getItem() != null && e.getItem().hasItemMeta()){
                 if(e.getItem().getItemMeta().hasEnchant(new ThorsHammer(90))){
-                
 
         ItemStack item = e.getItem();
-       
-            
+                ThorsHammerFire.FireThorsHammer(e.getPlayer());
 
-            
-              
-   
-                }else{return;}
+                }
+                else
+                {
+                    if(e.getItem().getItemMeta().hasEnchant(new Achoo(92))){
+               AchooSneeze.Sneeze(e.getPlayer());
+       }}
             }
             else
             {
@@ -59,37 +60,26 @@ public class WeaponListener implements Listener {
         
            
             
-       
+       @EventHandler
+       public void AddPoisionSword(EntityDamageByEntityEvent e){
+           if(e.getEntity() instanceof Player){
+               Player p = (Player) e.getEntity();
+               if(e.getDamager() instanceof Player){
+                   Player damager = (Player) e.getDamager();
+                   if(damager.getInventory().getItemInMainHand() != null && damager.getInventory().getItemInMainHand().hasItemMeta()){
+                       if(damager.getInventory().getItemInMainHand().getItemMeta().hasEnchant(new PoisionSword(91))){
+                           p.addPotionEffect(new PotionEffect(PotionEffectType.POISON,200,0)); 
+                       }
+                   }else{return;}
+               }else{return;}
+           }else{return;}
+       }
         
         
     
-    @EventHandler
-    public void addPoisionSword(EntityDamageEvent e){
-        if(e.getEntity() instanceof Player){
-            Player p = (Player) e.getEntity();
-           EntityDamageByEntityEvent damageEvent = (EntityDamageByEntityEvent) e;
-         if (damageEvent.getDamager() instanceof Player) {
-         Player damager = (Player) damageEvent.getDamager();
-         if(damager.getInventory().getItemInMainHand().getItemMeta().hasEnchant(new PoisionSword(91))){
-             if(!p.getActivePotionEffects().contains(PotionEffectType.POISON)){
-                 p.addPotionEffect(new PotionEffect(PotionEffectType.POISON,200,0));
-             }
-         }
-         }
-        }
-    }
     
     
-    @EventHandler
-    public void addAchoo(PlayerInteractEvent event){
-        Player sneezer = event.getPlayer();
-        ItemStack slime = event.getItem();
-       if(slime.getEnchantmentLevel(new Achoo(92))!= 0){
-           if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK){
-           
-               AchooSneeze.Sneeze(sneezer);
-       }
-       }
-    }
+    
+    
 }
 
