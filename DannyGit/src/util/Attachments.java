@@ -28,4 +28,10 @@ public class Attachments {
         }
         return false;
     }
+    public static Boolean canAttachAchoo(ItemStack item){
+        if(item.getType() == Material.SLIME_BALL){
+            return true;
+        }
+        return false;
+    }
 }

@@ -61,7 +61,13 @@ public class Enchant implements Listener{
              addPoisionSwordEnchant(item,1);
             }
      }
- }
+      if(item.getType().equals(Material.SLIME_BALL)){
+         double y = plugin.getConfig().getDouble("Probability.Achoo");
+         if(x<= y){
+             addAchooEnchant(item,1);
+         }
+      }
+ }         
  public static ItemStack addThorEnchant(ItemStack target, int level) {
      ThorsHammer thorshammer = new ThorsHammer(90);
 target.addUnsafeEnchantment(thorshammer, level);
@@ -110,4 +116,28 @@ target.addUnsafeEnchantment(poisionsword, level);
     return target;
 //return the itemstack
 }
+ public static ItemStack addAchooEnchant(ItemStack target, int level) {
+     Achoo achoo = new Achoo(92);
+ target.addUnsafeEnchantment(achoo, level);
+//first, add the enchant (ench) to the itemstack, this is created with the code of this page.
+    ItemMeta targetmeta = (ItemMeta) target.getItemMeta();
+//get the metadata
+    Map<Enchantment,Integer> enchantments = target.getEnchantments();
+//real, not good formated enchants
+    Iterator<Entry<Enchantment,Integer>> iter = enchantments.entrySet().iterator();
+    ArrayList<String> enc = new ArrayList<String>();
+//array with the correct enchants
+    while(iter.hasNext()){
+    Entry<Enchantment,Integer> entry = iter.next();
+    String lvl = RomanNumbers.run(entry.getValue());
+//translate the number, see the bottom for the code
+    enc.add(ChatColor.RESET + "" + ChatColor.GRAY + entry.getKey().getName().toString() + " " + lvl);
+//add the enchant name to the array
+    }
+    targetmeta.setLore(enc);
+//add the lore
+    target.setItemMeta(targetmeta);
+    return target;
+//return the itemstack    
+ }
 }

@@ -5,9 +5,11 @@
  */
 package Listeners;
 
+import EnchantmentTriggers.AchooSneeze;
 import EnchantmentTriggers.ThorsHammerFire;
 import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
+import Enchantments.Achoo;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,7 +29,7 @@ public class WeaponListener implements Listener {
     @EventHandler
     public void ClickListener(PlayerInteractEvent e){
         ItemStack item = e.getItem();
-        if(e.getItem().getEnchantmentLevel(new ThorsHammer(90))!= 0){
+        if(item.getEnchantmentLevel(new ThorsHammer(90))!= 0){
             if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
                
                 ThorsHammerFire.FireThorsHammer(e.getPlayer());
@@ -49,5 +51,16 @@ public class WeaponListener implements Listener {
          }
          }
         }
+    }
+    @EventHandler
+    public void addAchoo(PlayerInteractEvent event){
+        Player sneezer = event.getPlayer();
+        ItemStack slime = event.getItem();
+       if(slime.getEnchantmentLevel(new Achoo(92))!= 0){
+           if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK){
+           
+               AchooSneeze.Sneeze(sneezer);
+       }
+       }
     }
 }

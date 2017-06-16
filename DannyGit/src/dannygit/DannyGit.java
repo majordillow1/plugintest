@@ -9,9 +9,11 @@ package dannygit;
 import Commands.PoisionSwordcommand;
 import Commands.ReloadConfig;
 import Commands.ThorsHammerCommand;
+import Commands.AchooCommand;
 import Enchantments.Enchant;
 import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
+import Enchantments.Achoo;
 import Listeners.Farts;
 import Listeners.PickupListenerSuperWeapons;
 import Listeners.WeaponListener;
@@ -37,6 +39,7 @@ public class DannyGit extends JavaPlugin {
         //testing my name
         getCommand("poisionsword").setExecutor(new PoisionSwordcommand());
         getCommand("EnchantmentReload").setExecutor(new ReloadConfig(this));
+        getCommand("achoo").setExecutor(new AchooCommand());
         getServer().getPluginManager().registerEvents(new PickupListenerSuperWeapons(), this);
         getCommand("thorshammer").setExecutor(new ThorsHammerCommand());
       getServer().getPluginManager().registerEvents(new Enchant(this), this);
@@ -64,6 +67,8 @@ public class DannyGit extends JavaPlugin {
             Enchantment.registerEnchantment(thorshammer);
             PoisionSword poisionsword = new PoisionSword(91);
             Enchantment.registerEnchantment(poisionsword);
+            Achoo achoo = new Achoo(92);
+            Enchantment.registerEnchantment(achoo);
         }
         catch (IllegalArgumentException e){
         }

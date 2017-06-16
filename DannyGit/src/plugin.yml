@@ -13,7 +13,9 @@ commands:
     poisionsword:
         usage: /poisionsword
         description: add poisionsword to your sword
-    
+    achoo:
+        usage: /achoo
+        description: add achoo to a slimeball
 permissions:
     CustomEnchantments.SuperWeapon.get:
         default: op
