@@ -6,3 +6,5 @@ Probability:
 ThorsHammer:
     ExplosionSize: 40
     ExplosionDestroy: false
+Achoo:
+    FireRate: 20

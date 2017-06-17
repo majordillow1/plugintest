@@ -10,6 +10,10 @@ import EnchantmentTriggers.ThorsHammerFire;
 import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
 import Enchantments.Achoo;
+import dannygit.DannyGit;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,15 +25,23 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import util.RemoveUUID;
 
 /**
  *
  * @author knightmare
  */
 public class WeaponListener implements Listener {
+    public static Set<UUID> cooldown = new HashSet<>();
+    
+    DannyGit plugin;
+    public WeaponListener(DannyGit pl){
+        plugin = pl;
+    }
     @EventHandler
     public void ClickListener(PlayerInteractEvent e){
 
+    long FireRate = plugin.getConfig().getLong("Achoo.FireRate");
         if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
             if(e.getItem() != null && e.getItem().hasItemMeta()){
                 if(e.getItem().getItemMeta().hasEnchant(new ThorsHammer(90))){
@@ -41,7 +53,13 @@ public class WeaponListener implements Listener {
                 else
                 {
                     if(e.getItem().getItemMeta().hasEnchant(new Achoo(92))){
-               AchooSneeze.Sneeze(e.getPlayer());
+                        UUID puuid = e.getPlayer().getUniqueId();
+                        if(!cooldown.contains(puuid)){
+                             AchooSneeze.Sneeze(e.getPlayer());
+                             cooldown.add(puuid);
+                             new RemoveUUID(puuid).runTaskLater(plugin, FireRate);
+                             
+                        }                                
        }}
             }
             else

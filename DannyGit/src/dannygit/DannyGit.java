@@ -10,6 +10,7 @@ import Commands.PoisionSwordcommand;
 import Commands.ReloadConfig;
 import Commands.ThorsHammerCommand;
 import Commands.AchooCommand;
+import EnchantmentTriggers.AchooSneeze;
 import Enchantments.Enchant;
 import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
@@ -43,7 +44,7 @@ public class DannyGit extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PickupListenerSuperWeapons(), this);
         getCommand("thorshammer").setExecutor(new ThorsHammerCommand());
       getServer().getPluginManager().registerEvents(new Enchant(this), this);
-      getServer().getPluginManager().registerEvents(new WeaponListener(), this);
+      getServer().getPluginManager().registerEvents(new WeaponListener(this), this);
     registerEnchantments();
     createConfig();
     
