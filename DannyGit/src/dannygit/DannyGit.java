@@ -15,6 +15,7 @@ import Enchantments.Enchant;
 import Enchantments.PoisionSword;
 import Enchantments.ThorsHammer;
 import Enchantments.Achoo;
+import Listeners.EnchantmentTable;
 import Listeners.Farts;
 import Listeners.PickupListenerSuperWeapons;
 import Listeners.WeaponListener;
@@ -47,6 +48,7 @@ public class DannyGit extends JavaPlugin {
       getServer().getPluginManager().registerEvents(new WeaponListener(this), this);
     registerEnchantments();
     createConfig();
+    getServer().getPluginManager().registerEvents(new EnchantmentTable(), this);
     
     }
     public static void main(String[] args) {

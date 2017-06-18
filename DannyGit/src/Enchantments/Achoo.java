@@ -19,6 +19,8 @@ public class Achoo extends Enchantment {
         
     }
 
+   
+
     @Override
     public String getName() {
         return ("Achoo");
