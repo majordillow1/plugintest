@@ -5,6 +5,7 @@
  */
 package Enchantments;
 
+import Listeners.EnchantmentTable;
 import dannygit.DannyGit;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +23,7 @@ import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
+import util.Attachments;
 import util.RomanNumbers;
 
 /**
@@ -33,18 +35,28 @@ public class Enchant implements Listener{
     public Enchant(DannyGit instance){
         plugin = instance;
     }
-
-   
+public static boolean Thorhammerb = false;
+   public static boolean PoisionSwordb = false;
 
     
  @EventHandler
  public void AddEnchant(EnchantItemEvent e){
      ItemStack item = e.getItem();
-     double x = Math.random();
-     if(item.getType().equals(Material.DIAMOND_AXE)){
-         double y = plugin.getConfig().getDouble("Probability.ThorsHammer");
-         if(x<= y){
-             addThorEnchant(item,1);
+     if(e.getItem().getType() == Material.SLIME_BALL){
+         e.setCancelled(false);
+         if(e.whichButton()==0){
+             addAchooEnchant(item,1);
+         }
+     }
+     
+     
+     
+     if(Attachments.canAttachThorsHammer(e.getItem())){
+         if(Thorhammerb){
+             if(e.whichButton() == 0){
+                 e.getEnchantsToAdd().clear();
+                 addThorEnchant(item,1);
+             }
          }
         // e.getEnchanter().sendMessage("its been enchanted");
        // addThorEnchant(item,1);
@@ -55,18 +67,21 @@ public class Enchant implements Listener{
            item.getItemMeta().setLore(lore);  
            */
      }
-     if(item.getType().equals(Material.WOOD_SWORD)|| item.getType().equals(Material.IRON_SWORD)||item.getType().equals(Material.STONE_SWORD)|| item.getType().equals(Material.DIAMOND_SWORD)){
-        double y = plugin.getConfig().getDouble("Probability.PoisionSword");
-         if( x <= y ) {
+     if(Attachments.canAttachPoisionSword(e.getItem())){
+        if(PoisionSwordb){
+            e.getEnchantsToAdd().clear();
              addPoisionSwordEnchant(item,1);
-            }
+        }
+         
+            
+            
      }
-      if(item.getType().equals(Material.SLIME_BALL)){
-         double y = plugin.getConfig().getDouble("Probability.Achoo");
-         if(x<= y){
-             addAchooEnchant(item,1);
-         }
-      }
+     // if(item.getType().equals(Material.SLIME_BALL)){
+         //double y = plugin.getConfig().getDouble("Probability.Achoo");
+         //if(x<= y){
+         //    addAchooEnchant(item,1);
+        // }
+      //}
  }         
  public static ItemStack addThorEnchant(ItemStack target, int level) {
      ThorsHammer thorshammer = new ThorsHammer(90);
