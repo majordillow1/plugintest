@@ -54,7 +54,7 @@ public static boolean Thorhammerb = false;
      if(Attachments.canAttachThorsHammer(e.getItem())){
          if(Thorhammerb){
              if(e.whichButton() == 0){
-                 e.getEnchantsToAdd().clear();
+                // e.getEnchantsToAdd().clear();
                  addThorEnchant(item,1);
              }
          }
@@ -69,7 +69,7 @@ public static boolean Thorhammerb = false;
      }
      if(Attachments.canAttachPoisionSword(e.getItem())){
         if(PoisionSwordb){
-            e.getEnchantsToAdd().clear();
+           // e.getEnchantsToAdd().clear();
              addPoisionSwordEnchant(item,1);
         }
          
