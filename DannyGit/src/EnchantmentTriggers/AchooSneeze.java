@@ -6,6 +6,7 @@
 package EnchantmentTriggers;
 
 import dannygit.DannyGit;
+import org.bukkit.Sound;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.entity.Player;
 import org.bukkit.craftbukkit.Main;
@@ -18,6 +19,6 @@ import org.bukkit.event.Listener;
 public class AchooSneeze implements Listener{
     public static void Sneeze(Player s){
                  s.launchProjectile(LlamaSpit.class);
-      s.chat("ACHOO!!");
+      s.getWorld().playSound(s.getLocation(), Sound.ENTITY_LLAMA_SPIT, 1, 0);
         }  
     }
